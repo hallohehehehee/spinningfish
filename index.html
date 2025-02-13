@@ -1,3 +1,5 @@
+# Seconds Watching Fish
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +31,14 @@ img {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
+.timer {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  color: black;
+}
 </style>
 </head>
 <body>
@@ -39,11 +49,12 @@ img {
   <button id="playButton">Play Audio</button>
   <button id="noAudioButton">Show Page Without Audio</button>
 </div>
-<audio id="audio">
+<audio id="audio" loop>
   <source src="freebird.ogg" type="audio/ogg">
   <source src="freebird.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
+<div class="timer" id="timer">Seconds watching fish: 0:00</div>
 
 <script>
 document.getElementById('overlay').style.display = 'block';
@@ -59,6 +70,14 @@ document.getElementById('noAudioButton').onclick = function() {
   document.getElementById('overlay').style.display = 'none';
   document.getElementById('popup').style.display = 'none';
 };
+
+let seconds = 0;
+setInterval(function() {
+  seconds++;
+  const minutes = Math.floor(seconds / 60);
+  const displaySeconds = seconds % 60;
+  document.getElementById('timer').innerText = `Seconds vibing with fish: ${minutes}:${displaySeconds < 10 ? '0' : ''}${displaySeconds}`;
+}, 1000);
 </script>
 </body>
 </html>
