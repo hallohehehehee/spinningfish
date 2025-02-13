@@ -61,12 +61,12 @@ document.getElementById('popup').style.display = 'block';
 document.getElementById('playButton').onclick = function() {
   document.getElementById('audio').play();
   document.getElementById('overlay').style.display = 'none';
-  document.getElementById('popup').style.display = 'none';
+  document.getElementById('popup').style.left = '-9999px'; // Move popup offscreen
 };
 
 document.getElementById('noAudioButton').onclick = function() {
   document.getElementById('overlay').style.display = 'none';
-  document.getElementById('popup').style.display = 'none';
+  document.getElementById('popup').style.left = '-9999px'; // Move popup offscreen
 };
 
 let seconds = 0;
